@@ -1,3 +1,5 @@
+import {getTime} from './timezone';
+
 const getCity = response => response.name;
 const getCountry = response => response.sys.country;
 const getWeatherData = response => {
@@ -9,8 +11,8 @@ const getTodaysTemperatures = response => {
     return `Temperature (min, average, max): ${[temp_min, temp, temp_max].join(', ')}`
 };
 
-const getSunriseSunset = response =>
-    'Sunrise: hh:mm, Sunset: hh:mm';
+const getSunriseSunset = ({sys: {sunrise, sunset}, timezone}) =>
+    `Sunrise: ${getTime(sunrise, timezone)}, Sunset: ${getTime(sunset, timezone)}`;
 
 const getTodaysTemplate = response => `
 <div>${getCity(response)}, ${getCountry(response)}: ${getWeatherData(response)}</div>
