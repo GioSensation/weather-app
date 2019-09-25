@@ -1,12 +1,18 @@
 <!doctype html>
-<html>
+<html lang="en">
     <head>
         <title>The weather app</title>
+        <meta charset="utf-8">
     </head>
     <body>
         <h1>The weather app</h1>
-        <ul class="js-city-weather">
-        </ul>
+        <div class="city-input js-city-input">
+            <label for="js-city-field">Enter city:</label>
+            <input type="text" class="js-city-field" id="js-city-field"/>
+            <button class="js-search-city">Search</button>
+        </div>
+        <div class="js-city-weather">
+        </div>
         <!-- Run 
 
              npm install
