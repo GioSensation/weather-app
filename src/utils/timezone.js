@@ -12,8 +12,6 @@ export const getTime = (timestamp, timezoneOffset) => {
 };
 
 export const getDate = (timestamp, timezoneOffset) => {
-    console.log('timestamp: ', timestamp);
-    console.log('timezoneOffset: ', timezoneOffset);
     const tzTimestamp = getTzTimestamp(timestamp, timezoneOffset);
     return DATE_FORMATTER(tzTimestamp);
 };
