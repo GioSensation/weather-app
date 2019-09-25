@@ -96,7 +96,7 @@ describe('Parser util', () => {
             list: [
                 {
                     dt: 1569402000,
-                    temp: {day: 20},
+                    main: {temp: 20},
                     weather: [{
                         main: 'Sunny',
                         description: 'sky is clear'
@@ -104,7 +104,7 @@ describe('Parser util', () => {
                 },
                 {
                     dt: 1569488400,
-                    temp: {day: 16},
+                    main: {temp: 16},
                     weather: [{
                         main: 'Clouds',
                         description: 'broken clouds'
@@ -153,7 +153,7 @@ describe('Parser util', () => {
             list: [
                 {
                     dt: 1569402000,
-                    temp: {day: 20},
+                    main: {temp: 20},
                     weather: [{
                         main: 'Sunny',
                         description: 'sky is clear'
@@ -161,7 +161,7 @@ describe('Parser util', () => {
                 },
                 {
                     dt: 1569488400,
-                    temp: {day: 16},
+                    main: {temp: 16},
                     weather: [{
                         main: 'Clouds',
                         description: 'broken clouds'

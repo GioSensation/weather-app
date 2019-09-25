@@ -27,7 +27,7 @@ const getForecastRow = forecast => rowNumber => {
     return `
 <tr>
     <td>${date}</td>
-    <td>${row.temp.day}</td>
+    <td>${row.main.temp}</td>
     <td>${row.weather[0].main} (${row.weather[0].description})</td>
 </tr>
 `.trim();
