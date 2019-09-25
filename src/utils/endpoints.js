@@ -8,6 +8,6 @@ export const getOpenWeatherMapUrl =
     endpoint =>
         params =>
             city =>
-                `https://api.openweathermap.org/data/2.5/weather` +
+                `https://api.openweathermap.org/data/2.5/` +
                 `${endpoint}?q=${city}&appid=${WEATHER_API_KEY}` +
                 getParamString(params);

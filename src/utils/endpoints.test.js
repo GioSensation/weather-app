@@ -24,7 +24,7 @@ describe('Endpoints', () => {
         };
         const url = getOpenWeatherMapUrl('endpoint')(params)('city');
 
-        const prefix = 'https://api.openweathermap.org/data/2.5/weather';
+        const prefix = 'https://api.openweathermap.org/data/2.5/';
         const paramString = getParamString(params);
         const result = `${prefix}endpoint?q=city&appid=${WEATHER_API_KEY}${paramString}`;
         expect(url).to.equal(result);
