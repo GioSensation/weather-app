@@ -61,7 +61,7 @@ describe('Parser util', () => {
         expect(getSunriseSunset(weatherInputDallas)).to.equal(response);
     });
 
-    it('should full template for today', () => {
+    it('should return full template for today', () => {
         const input = {
             main: {
                 temp: 20,
@@ -91,11 +91,109 @@ describe('Parser util', () => {
         expect(getTodaysTemplate(input)).to.equal(response);
     });
 
-    xit('should return a forecast row', () => {
+    it('should return a forecast row', () => {
+        const forecastResponse = {
+            list: [
+                {
+                    dt: 1569402000,
+                    temp: {day: 20},
+                    weather: [{
+                        main: 'Sunny',
+                        description: 'sky is clear'
+                    }]
+                },
+                {
+                    dt: 1569488400,
+                    temp: {day: 16},
+                    weather: [{
+                        main: 'Clouds',
+                        description: 'broken clouds'
+                    }]
+                }
+            ],
+            city: {
+                timezone: -18000
+            }
+        };
+        const firstRow = getForecastRow(forecastResponse)(0);
+        const secondRow = getForecastRow(forecastResponse)(1);
 
+        const expectedFirstRow = `
+<tr>
+    <td>Sep 25</td>
+    <td>20</td>
+    <td>Sunny (sky is clear)</td>
+</tr>
+`.trim();
+        const expectedSecondRow = `
+<tr>
+    <td>Sep 26</td>
+    <td>16</td>
+    <td>Clouds (broken clouds)</td>
+</tr>
+`.trim();
+
+        expect(firstRow).to.equal(expectedFirstRow);
+        expect(secondRow).to.equal(expectedSecondRow);
     });
 
-    xit('should return the full forecast table', () => {
+    it('should return an empty string if the forecast row does not exist', () => {
+        const forecastResponse = {
+            list: [],
+            city: {
+                timezone: -18000
+            }
+        };
+        const firstRow = getForecastRow(forecastResponse)(0);
+        expect(firstRow).to.equal('');
+    });
 
+    it('should return the full forecast table', () => {
+        const forecastResponse = {
+            list: [
+                {
+                    dt: 1569402000,
+                    temp: {day: 20},
+                    weather: [{
+                        main: 'Sunny',
+                        description: 'sky is clear'
+                    }]
+                },
+                {
+                    dt: 1569488400,
+                    temp: {day: 16},
+                    weather: [{
+                        main: 'Clouds',
+                        description: 'broken clouds'
+                    }]
+                }
+            ],
+            city: {
+                timezone: -18000
+            }
+        };
+        const table = getForecastTable(forecastResponse)(0, 1);
+
+        const expectedResult = `
+<table>
+<tr>
+    <td>Date</td>
+    <td>Temperature (C)</td>
+    <td>WeatherDescription</td>
+</tr>
+
+<tr>
+    <td>Sep 25</td>
+    <td>20</td>
+    <td>Sunny (sky is clear)</td>
+</tr>
+<tr>
+    <td>Sep 26</td>
+    <td>16</td>
+    <td>Clouds (broken clouds)</td>
+</tr>
+</table>`.trim();
+
+        expect(table).to.equal(expectedResult);
     });
 });

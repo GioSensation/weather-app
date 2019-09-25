@@ -32,5 +32,5 @@ describe('Endpoints', () => {
 });
 
 // https://api.openweathermap.org/data/2.5/weather?q=London&appid=4d202f755d17e552c655cea328f2cf7a&units=metric
-// https://api.openweathermap.org/data/2.5/forecast/daily?q=London&appid=4d202f755d17e552c655cea328f2cf7a&units=metric&cnt=16
+// https://api.openweathermap.org/data/2.5/forecast?q=London&appid=4d202f755d17e552c655cea328f2cf7a&units=metric&cnt=16
 
