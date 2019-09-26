@@ -1,6 +1,6 @@
 # Weather app
 
-A simple weather app built using [openweathermap.org](https://openweathermap.org/) and functional programming principles. 
+A simple weather app built using [openweathermap.org](https://openweathermap.org/) and functional programming principles.
 
 ## Build:
 
